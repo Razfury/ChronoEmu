@@ -1430,6 +1430,14 @@ void WorldSession::HandleGameObjectUse(WorldPacket & recv_data)
 	case GAMEOBJECT_TYPE_GOOBER:
 		{
 			//Quest related mostly
+			if (goinfo->ID == 142189) // Quest: Inconspicuous Landmark (Quest: Cuergo's Gold quest id 2882)
+			{
+				obj->GetMapMgr()->GetInterface()->SpawnCreature(7899, plyr->GetPositionX() + 2, plyr->GetPositionY() - 4, plyr->GetPositionZ(), plyr->GetOrientation(), true, false, 0, 0);
+				obj->GetMapMgr()->GetInterface()->SpawnCreature(7899, plyr->GetPositionX() + 3, plyr->GetPositionY() - 1, plyr->GetPositionZ(), plyr->GetOrientation(), true, false, 0, 0);
+				obj->GetMapMgr()->GetInterface()->SpawnCreature(7902, plyr->GetPositionX() + 5, plyr->GetPositionY() - 2, plyr->GetPositionZ(), plyr->GetOrientation(), true, false, 0, 0);
+				obj->GetMapMgr()->GetInterface()->SpawnCreature(7901, plyr->GetPositionX() + 2, plyr->GetPositionY() - 2, plyr->GetPositionZ(), plyr->GetOrientation(), true, false, 0, 0);
+				obj->GetMapMgr()->GetInterface()->SpawnGameObject(142194, plyr->GetPositionX(), plyr->GetPositionY(), plyr->GetPositionZ(), 0.0f, true, 0, 0);
+			}
 		}
 	case GAMEOBJECT_TYPE_CAMERA://eye of azora
 		{
