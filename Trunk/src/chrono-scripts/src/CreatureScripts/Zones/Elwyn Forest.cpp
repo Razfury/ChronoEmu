@@ -84,15 +84,6 @@ class DefiasRogueWizardAI : public MoonScriptCreatureAI
 	}
 };
 
-#define CN_DISEASED_YOUNG_WOLF 299
-class DiseasedYoungWolfAI : public MoonScriptCreatureAI
-{
-	MOONSCRIPT_FACTORY_FUNCTION(DiseasedYoungWolfAI, MoonScriptCreatureAI);
-	DiseasedYoungWolfAI(Creature* pCreature):MoonScriptCreatureAI(pCreature) 
-	{	
-		ApplyAura(24604);
-	}
-};
 
 #define CN_FEDFENNEL 472
 class FedfennelAI : public MoonScriptCreatureAI
@@ -200,7 +191,6 @@ class MangyWolfAI : public MoonScriptCreatureAI
 	MangyWolfAI(Creature* pCreature):MoonScriptCreatureAI(pCreature) 
 	{	
 		AddSpell(17255, Target_Current, 30,0,10);
-		ApplyAura(24604);
 		AddSpell(14916, Target_Current, 15,0,5);
 	}
 };
@@ -383,7 +373,6 @@ void SetupElwynForestNPC(ScriptMgr * mgr)
 	mgr->register_creature_script(CN_DEFIAS_CUTPURSE, &DefiasCutpurseAI::Create);
 	mgr->register_creature_script(CN_DEFIAS_DOCKWORKER, &DefiasDockworkerAI::Create);
 	mgr->register_creature_script(CN_DEFIAS_ROGUE_WIZARD, &DefiasRogueWizardAI::Create);
-	mgr->register_creature_script(CN_DISEASED_YOUNG_WOLF, &DiseasedYoungWolfAI::Create);
 	mgr->register_creature_script(CN_FEDFENNEL, &FedfennelAI::Create);
 	mgr->register_creature_script(CN_FOREST_SPIDER, &ForestSpiderAI::Create);
 	mgr->register_creature_script(CN_FORLORN_SPIRIT, &ForlornSpiritAI::Create);
