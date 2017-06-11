@@ -57,7 +57,6 @@ extern "C" SCRIPT_DECL void _exp_script_register(ScriptMgr* mgr)	// Comment any 
 	SetupAzsharaNPC(mgr);
 	SetupDeadwindPassNPC(mgr);
 	SetupDurotarNPC(mgr);
-	SetupElwynForestNPC(mgr);
 	SetupMulgoreNPC(mgr);
 	SetupStormwindNPC(mgr);
 }

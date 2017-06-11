@@ -49,7 +49,6 @@ void SetupAlteracMountainsNPC(ScriptMgr * mgr);
 void SetupAzsharaNPC(ScriptMgr * mgr);
 void SetupDeadwindPassNPC(ScriptMgr * mgr);
 void SetupDurotarNPC(ScriptMgr * mgr);
-void SetupElwynForestNPC(ScriptMgr * mgr);
 void SetupMulgoreNPC(ScriptMgr *mgr);
 void SetupStormwindNPC(ScriptMgr *mgr);
 
