@@ -1125,35 +1125,34 @@ bool ChatHandler::HandleShowCheatsCommand(const char* args, WorldSession* m_sess
 
 bool ChatHandler::HandleFlyCommand(const char* args, WorldSession* m_session)
 {
-	WorldPacket fly(835, 13);
+	//WorldPacket fly(835, 13);
 	
 	Player *chr = getSelectedChar(m_session);
-	
 	if(!chr)
 		chr = m_session->GetPlayer();
 	
-	chr->m_setflycheat = true;
+	/*chr->m_setflycheat = true;
 	fly << chr->GetNewGUID();
 	fly << uint32(2);
-	chr->SendMessageToSet(&fly, true);
-	BlueSystemMessage(chr->GetSession(), "Flying mode enabled.");
+	chr->SendMessageToSet(&fly, true);*/
+	BlueSystemMessage(chr->GetSession(), "Flying mode does not exist on patch 1.12.1, failed.");
 	return 1;
 }
 
 bool ChatHandler::HandleLandCommand(const char* args, WorldSession* m_session)
 {
-	WorldPacket fly(836, 13);
+	//WorldPacket fly(836, 13);
 	
 	Player *chr = getSelectedChar(m_session);
 	
 	if(!chr)
 		chr = m_session->GetPlayer();
 	
-	chr->m_setflycheat = false;
+	/*chr->m_setflycheat = false;
 	fly << chr->GetNewGUID();
 	fly << uint32(5);
-	chr->SendMessageToSet(&fly, true);
-	BlueSystemMessage(chr->GetSession(), "Flying mode disabled.");
+	chr->SendMessageToSet(&fly, true);*/
+	BlueSystemMessage(chr->GetSession(), "Flying mode does not exist on patch 1.12.1, failed.");
 	return 1;
 }
 
@@ -2924,4 +2923,3 @@ bool ChatHandler::HandleMultiAccountBanCommand(const char *args, WorldSession *m
 
 	return true;
 }
-
