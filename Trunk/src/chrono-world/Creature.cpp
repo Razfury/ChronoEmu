@@ -870,7 +870,16 @@ bool Creature::Load(CreatureSpawn *spawn, uint32 mode, MapInfo *info)
 
 	//Set fields
 	SetUInt32Value(OBJECT_FIELD_ENTRY,proto->Id);
-	SetFloatValue(OBJECT_FIELD_SCALE_X,proto->Scale);
+	// Hackfix - TODO: figure out why beast creatures are larger then normal right now we are going to normalize them if they are beast category.
+	// todo status: Investigation
+	if (creature_info->Type == 1)
+	{
+		SetFloatValue(OBJECT_FIELD_SCALE_X, proto->Scale - 0.4);
+	}
+	else
+	{
+		SetFloatValue(OBJECT_FIELD_SCALE_X, proto->Scale);
+	}
 	
 	//SetUInt32Value(UNIT_FIELD_HEALTH, (mode ? long2int32(proto->Health * 1.5)  : proto->Health));
 	//SetUInt32Value(UNIT_FIELD_BASE_HEALTH, (mode ? long2int32(proto->Health * 1.5)  : proto->Health));
@@ -886,11 +895,6 @@ bool Creature::Load(CreatureSpawn *spawn, uint32 mode, MapInfo *info)
 	SetUInt32Value(UNIT_FIELD_MAXPOWER1,proto->Mana);
 	SetUInt32Value(UNIT_FIELD_BASE_MANA,proto->Mana);
 	
-	// Whee, thank you blizz, I love patch 2.2! Later on, we can randomize male/female mobs! xD
-	// Determine gender (for voices)
-	//if(spawn->displayid != creature_info->Male_DisplayID)
-	//	setGender(1);   // Female
-	
 	uint32 model;
 	uint32 gender = creature_info->GenerateModelId(&model);
 	setGender(gender);
@@ -899,7 +903,6 @@ bool Creature::Load(CreatureSpawn *spawn, uint32 mode, MapInfo *info)
 	SetUInt32Value(UNIT_FIELD_NATIVEDISPLAYID,model);
 	SetUInt32Value(UNIT_FIELD_MOUNTDISPLAYID,proto->MountedDisplayID);
 
-    //SetUInt32Value(UNIT_FIELD_LEVEL, (mode ? proto->Level + (info ? info->lvl_mod_a : 0) : proto->Level));
 	SetUInt32Value(UNIT_FIELD_LEVEL, proto->MinLevel + (RandomUInt(proto->MaxLevel - proto->MinLevel)));
 	if(mode && info)
 		ModUnsigned32Value(UNIT_FIELD_LEVEL, info->lvl_mod_a);
